@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabores da Lu - Pães, Bolos e Delícias Caseiras</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="home">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-content">
+                    <div class="contact-info">
+                        <span><i class="fas fa-phone"></i> (11) 99999-8888</span>
+                        <span><i class="fas fa-clock"></i> Seg-Sáb: 7h às 20h</span>
+                    </div>
+                    <div class="social-links-top">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/5511999998888" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar" id="navbar">
+            <div class="container">
+                <div class="nav-content">
+                    <!-- LOGO -->
+                    <div class="logo-area">
+                        <div class="logo-circle">
+                            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+                                <circle cx="60" cy="60" r="58" fill="#8B0000" stroke="#FFD700" stroke-width="3"/>
+                                <path d="M25 75 Q35 45 50 50 Q55 35 65 40 Q70 25 80 35 Q90 30 95 50 Q100 55 98 70 Q95 80 85 82 Q75 85 60 83 Q45 81 35 80 Q25 79 25 75Z" fill="#F5DEB3" opacity="0.9"/>
+                                <path d="M30 72 Q40 50 55 53 Q58 42 66 45 Q70 35 78 42 Q86 38 90 52 Q93 58 92 68 Q90 76 82 78 Q72 81 60 80 Q48 79 38 77 Q28 76 30 72Z" fill="#DEB887"/>
+                                <path d="M35 70 Q43 52 56 55 Q60 46 66 48 Q70 40 76 45 Q82 42 85 53 Q87 60 86 67 Q85 73 78 75 Q68 78 60 77 Q50 76 42 74 Q34 73 35 70Z" fill="#CD853F"/>
+                                <ellipse cx="50" cy="44" rx="4" ry="3" fill="#8B4513" transform="rotate(-15, 50, 44)"/>
+                                <ellipse cx="65" cy="38" rx="3" ry="2.5" fill="#8B4513" transform="rotate(10, 65, 38)"/>
+                                <ellipse cx="78" cy="43" rx="3.5" ry="2.5" fill="#8B4513" transform="rotate(-5, 78, 43)"/>
+                                <path d="M40 68 Q42 62 46 65" stroke="#A0522D" stroke-width="1" fill="none"/>
+                                <path d="M55 70 Q57 63 62 66" stroke="#A0522D" stroke-width="1" fill="none"/>
+                                <path d="M70 69 Q72 63 76 66" stroke="#A0522D" stroke-width="1" fill="none"/>
+                                <text x="60" y="100" font-family="serif" font-size="10" fill="#FFD700" text-anchor="middle" font-weight="bold">SABORES</text>
+                                <text x="60" y="110" font-family="serif" font-size="8" fill="#FFD700" text-anchor="middle">DA LU</text>
+                            </svg>
+                        </div>
+                        <div class="logo-text">
+                            <span class="brand-name">Sabores da Lu</span>
+                            <span class="brand-tagline">Feito com amor ❤️</span>
+                        </div>
+                    </div>
+
+                    <!-- NAVIGATION LINKS -->
+                    <ul class="nav-links" id="navLinks">
+                        <li><a href="#home" class="nav-link active" onclick="navigateTo('home')"><i class="fas fa-home"></i> Início</a></li>
+                        <li><a href="#cardapio" class="nav-link" onclick="navigateTo('cardapio')"><i class="fas fa-utensils"></i> Cardápio</a></li>
+                        <li><a href="#promocoes" class="nav-link" onclick="navigateTo('promocoes')"><i class="fas fa-tags"></i> Promoções</a></li>
+                        <li><a href="#feedbacks" class="nav-link" onclick="navigateTo('feedbacks')"><i class="fas fa-star"></i> Feedbacks</a></li>
+                        <li><a href="#contato" class="nav-link" onclick="navigateTo('contato')"><i class="fas fa-envelope"></i> Contato</a></li>
+                    </ul>
+
+                    <!-- CART BUTTON -->
+                    <div class="cart-area">
+                        <button class="cart-btn" id="cartBtn" onclick="toggleCart()">
+                            <i class="fas fa-shopping-basket"></i>
+                            <span class="cart-badge" id="cartBadge">0</span>
+                        </button>
+                    </div>
+
+                    <!-- HAMBURGER -->
+                    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CART SIDEBAR -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-basket"></i> Seu Carrinho</h3>
+            <button class="cart-close" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty" id="cartEmpty">
+                <i class="fas fa-shopping-basket"></i>
+                <p>Seu carrinho está vazio</p>
+                <span>Adicione itens deliciosos!</span>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display:none;">
+            <div class="cart-total">
+                <span>Total:</span>
+                <strong id="cartTotal">R$ 0,00</strong>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">
+                <i class="fab fa-whatsapp"></i> Finalizar via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="heroSection">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">🍞 Delícias Fresquinhas Todo Dia</div>
+            <h1 class="hero-title">
+                Feito com <span class="highlight">Amor</span><br>
+                e <span class="highlight">Carinho</span>
+            </h1>
+            <p class="hero-subtitle">
+                Pães artesanais, bolos caseiros e muito mais.<br>
+                Encomende agora e receba na sua porta!
+            </p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="navigateTo('cardapio')">
+                    <i class="fas fa-utensils"></i> Ver Cardápio
+                </button>
+                <a href="https://wa.me/5511999998888" class="btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Encomendar Agora
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES STRIP -->
+    <section class="features-strip">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🌾</div>
+                    <div class="feature-text">
+                        <strong>Ingredientes Naturais</strong>
+                        <span>100% artesanal</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">❤️</div>
+                    <div class="feature-text">
+                        <strong>Feito com Amor</strong>
+                        <span>Receitas da família</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🚚</div>
+                    <div class="feature-text">
+                        <strong>Entrega Rápida</strong>
+                        <span>Na sua porta</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⭐</div>
+                    <div class="feature-text">
+                        <strong>+500 Clientes</strong>
+                        <span>Satisfeitos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARDÁPIO SECTION -->
+    <section class="section" id="cardapioSection" style="display:none;">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">🍰 Nossos Produtos</div>
+                <h2 class="section-title">Cardápio</h2>
+                <p class="section-subtitle">Escolha as delícias que mais te agradam e adicione ao carrinho!</p>
+            </div>
+
+            <!-- CATEGORY FILTERS -->
+            <div class="category-filters">
+                <button class="filter-btn active" onclick="filterCategory('todos')">Todos</button>
+                <button class="filter-btn" onclick="filterCategory('paes')">🍞 Pães</button>
+                <button class="filter-btn" onclick="filterCategory('bolos')">🎂 Bolos</button>
+                <button class="filter-btn" onclick="filterCategory('delicias')">🍪 Delícias</button>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- PÃES -->
+                <div class="product-card" data-category="paes">
+                    <div class="product-image-wrapper">
+                        <img src="https://sspark.genspark.ai/cfimages?u1=T5gdic4Etinyd5%2F1kuU7x3vRoUPJlkaNSH%2B7QQ3V198lyIXOWXq0B2Z4zR9UJkEVOl7isj80yDeKRSwTEn3igii6VyCpW%2BHc3NCTarM3F4rzZI4T8TVM3HDxLRXkTvs%3D&u2=1RfpHdE7NlIwJlbo&width=2560" alt="Pão Caseiro Artesanal" loading="lazy">
+                        <div class="product-badge">🔥 Mais Vendido</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category-tag">Pães</div>
+                        <h3>Pão Caseiro Artesanal</h3>
+                        <p>Pão fresquinho feito com farinha selecionada, perfeito para o café da manhã. Crocante por fora, macio por dentro.</p>
+                        <div class="product-footer">
+                            <div class="product-price">R$ 18,00</div>
+                            <button class="add-to-cart" onclick="addToCart('Pão Caseiro Artesanal', 18.00, this)">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="paes">
+                    <div class="product-image-wrapper">
+                        <img src="https://sspark.genspark.ai/cfimages?u1=FWFU2roTYCC0fNfk1B0NHtgNKLQYrzwezOwO%2BtrFxaH%2Fc66TNCcpakIT09ZrbaQ810KnYZe0QEXLjYaed5TcBOWVOXkrCQf6%2BGNCeLRJ8sGHoMCYn1mp3%2FAEOOTz2zc8hg72&u2=ULwWxYXccUgHmitg&width=2560" alt="Pão de Queijo" loading="lazy">
+                        <div class="product-badge new-badge">✨ Novo</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category-tag">Pães</div>
+                        <h3>Pão de Queijo Mineiro</h3>
+                        <p>O verdadeiro pão de queijo mineiro, quentinho e derretendo! Feito com polvilho azedo e queijo meia cura.</p>
+                        <div class="product-footer">
+                            <div class="product-price">R$ 2,50 <span class="unit">/ unid.</span></div>
+                            <button class="add-to-cart" onclick="addToCart('Pão de Queijo Mineiro', 2.50, this)">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="paes">
+                    <div class="product-image-wrapper">
+                        <img src="https://sspark.genspark.ai/cfimages?u1=lbCYxMYwl6Q7SGn5KNqFLveYer9O9luWXTYb9S7e3MS1dX0uP%2FIJayGHUFetiemgafensAeuzdvAZmjF8lHDZZDUyv568ZZrwGC98cQva%2FqT0CjAWCpXaZVW7IPxiibzeTk%3D&u2=PZvPgfTC43lGtzNe&width=2560" alt="Pão de Canela" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category-tag">Pães</div>
+                        <h3>Pão de Canela Recheado</h3>
+                        <p>Irresistível pão de canela com recheio de açúcar mascavo e manteiga, coberto com glacê de baunilha.</p>
+                        <div class="product-footer">
+                            <div class="product-price">R$ 12,00</div>
+                            <button class="add-to-cart" onclick="addToCart('Pão de Canela Recheado', 12.00, this)">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="paes">
+                    <div class="product-image-wrapper">
+                        <img src="https://sspark.genspark.ai/cfimages?u1=EqfnGtSZnxSPM%2BMQNnQlAbyEYm%2BAJtZ7CBuCW4BBVeUMoMVNF4wINQRfMDrG9Mizs5wYlPsek4WglInzJGPN8t4o5QHsx3gYYbZJCZmo%2FlyVcWkpb31izkbZvRPw%3D%3D&u2=ZslhvwBnrKXwCxhh&width=2560" alt="Pão Francês" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category-tag">Pães</div>
+                        <h3>Pão Francês Artesanal</h3>
+                        <p>Crocante, dourado e perfeito! Nosso pão francês é assado no forno a lenha para um sabor único e especial.</p>
+                        <div class="product-footer">
+                            <div class="product-price">R$ 1,00 <span class="unit">/ unid.</span></div>
+                            <button class="add-to-cart" onclick="addToCart('Pão Francês Artesanal', 1.00, this)">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BOLOS -->
+                <div class="product-card" data-category="bolos">
+                    <div class="product-image-wrapper">
+                        <img src="https://sspark.genspark.ai/cfimages?u1=ejrUjQabP3qDGURIaM6ZsK6YheVfB6AqFS9lY43PT5dRZTdQ49ru1O6eSgFNcpv132vA10qSs55PwccaXQEtxRc10prIEk2Fad1gIMNaZUYmcCHYKytLp6cRnQY&u2=HUqt51MDtEtXu%2FxA&width=2560" alt="Bolo de Chocolate" loading="lazy">
+                        <div class="product-badge">🔥 Favorito</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category-tag">Bolos</div>
+                        <h3>Bolo de Chocolate Triplo</h3>
+                        <p>Três camadas de bolo de chocolate com cobertura cremosa de ganache. Puro prazer em cada fatia!</p>
+                        <div class="product-footer">
+                            <div class="product-price">R$ 85,00</div>
+                            <button class="add-to-cart" onclick="addToCart('Bolo de Chocolate Triplo', 85.00, this)">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="bolos">
+                    <div class="product-image-wrapper">
+                        <img src="https://sspark.genspark.ai/cfimages?u1=H3%2FKn3v%2FswzckVqU7pQzSbvzvGd5uV25yndsGofAWiAYHVwULnytBB2e%2Bi%2FSmHAnM9PjuWRmajmmS9cWEbLTFXgbeuaiYYMMzu5PG3NHVv0ShDJCkKmHN%2Bk7%2FdcjePBHOHKYjusn%2FBbs&u2=2CS%2BTMtQXndyzxgP&width=2560" alt="Bolo de Cenoura" loading="lazy">
+                        <div class="product-badge">❤️ Especial</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category-tag">Bolos</div>
+                        <h3>Bolo de Cenoura com Chocolate</h3>
+                        <p>O clássico bolo de cenoura brasileiro com cobertura de chocolate quentinho. Receita da vovó!</p>
+                        <div class="product-footer">
+                            <div class="product-price">R$ 65,00</div>
+                            <button class="add-to-cart" onclick="addToCart('Bolo de Cenoura com Chocolate', 65.00, this)">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="bolos">
+                    <div class="product-image-wrapper">
+                        <img src="https://sspark.genspark.ai/cfimages?u1=2kUoQbMv472jkMgZpftr%2B91161AOSoCY%2FP5O0cuN8SJ7kkrP1VQCFJ0HNigxKNMcbFATRhidOcMd7N5ws8plLqg2TC2ZSY%2B7ppIpHIXyLptXXQsb&u2=ENtDwtaoer9pQt9F&width=2560" alt="Bolo de Mel" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category-tag">Bolos</div>
+                        <h3>Bolo de Mel Artesanal</h3>
+                        <p>Delicioso bolo com mel puro e especiarias. Textura densa e molhada, perfeito para qualquer ocasião.</p>
+                        <div class="product-footer">
+                            <div class="product-price">R$ 55,00</div>
+                            <button class="add-to-cart" onclick="addToCart('Bolo de Mel Artesanal', 55.00, this)">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="bolos">
+                    <div class="product-image-wrapper">
+                        <img src="https://sspark.genspark.ai/cfimages?u1=mHUIAwfn4Sa0yyfLyoKlDOedFNP0viYEm%2F%2Ftn%2F8MTYJ3mx%2F1uJjQSKju7E%2BgFBMmmGK%2Bp0lV1lWot7%2FuWYsjf9V1oWgX45mFLWtH%2B%2F%2FC8IFxHQxSOYk72lBYIT1A5S8Hlvt88LsBOVQVu23s&u2=JFq7N9Xf1uKufWHS&width=2560" alt="Bolo de Aniversário" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category-tag">Bolos</div>
+                        <h3>Bolo de Aniversário Especial</h3>
+                        <p>Bolo personalizado para celebrar momentos únicos. Escolha o sabor, tamanho e decoração!</p>
+                        <div class="product-footer">
+                            <div class="product-price">R$ 120,00</div>
+                            <button class="add-to-cart" onclick="addToCart('Bolo de Aniversário Especial', 120.00, this)">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DELÍCIAS -->
+                <div class="product-card" data-category="delicias">
+                    <div class="product-image-wrapper">
+                        <img src="https://sspark.genspark.ai/cfimages?u1=2RcKPfbh33dCvmSMmGUn1K5qidpQS1zlVJNb1UNYxZny%2FYXkKmlZIBikv8Q0jz0%2BXyeH86pOMOWCf7OcKqMn1%2Frowv0eo8zEPZO5Wi6TUV1MyXmKuTABMMFCcoVpamGakvsUnd91DrbS6Q%3D%3D&u2=6v8D8fRL97aaJT2I&width=2560" alt="Cinnamon Roll" loading="lazy">
+                        <div class="product-badge new-badge">✨ Novo</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category-tag">Delícias</div>
+                        <h3>Cinnamon Roll</h3>
+                        <p>Espiral de massa fofinha com canela e açúcar mascavo, cobertura de cream cheese. Quente e irresistível!</p>
+                        <div class="product-footer">
+                            <div class="product-price">R$ 15,00</div>
+                            <button class="add-to-cart" onclick="addToCart('Cinnamon Roll', 15.00, this)">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="delicias">
+                    <div class="product-image-wrapper">
+                        <img src="https://sspark.genspark.ai/cfimages?u1=BqwXaxjhcwttdW5RpHK4gJkAQMBRUa%2B5gwOiF45VMqbrEL4dt6CIbwXSRZrw4uKzZQQeWuZs6NKBmRmd9%2BD2sgijZJQRgOIAVTvNnm8VeKjBqvfnNwb%2FPzNLv9ED0tpHR7pIRwJbxyx7DLX8HDuTMstaJZc%3D&u2=sItmKJuMtfDWHSX9&width=2560" alt="Pão de Queijo Gourmet" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category-tag">Delícias</div>
+                        <h3>Pão de Queijo Gourmet</h3>
+                        <p>Versão premium do nosso pão de queijo, recheado com queijo gorgonzola e goiabada. Combinação perfeita!</p>
+                        <div class="product-footer">
+                            <div class="product-price">R$ 5,00 <span class="unit">/ unid.</span></div>
+                            <button class="add-to-cart" onclick="addToCart('Pão de Queijo Gourmet', 5.00, this)">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="delicias">
+                    <div class="product-image-wrapper">
+                        <img src="https://sspark.genspark.ai/cfimages?u1=kI8UleHweZvSDPAWuwvXN%2BicMrrlMFZ2TyiVdFJN6jC6lt2cWhnD7gSZakhagFbgY5xQmxCTQJ4%2FM6JfshNU3DjUL8eYBg%2Ba6nS10u8THg3%2F8TZSeDHn4jr78MxpsdMSY2hieeisxTWtXVvWxUv61rlYYA%3D%3D&u2=PMvLwW9tehhJjiKI&width=2560" alt="Cinnamon Roll Mini" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category-tag">Delícias</div>
+                        <h3>Mini Cinnamon Rolls (12 un.)</h3>
+                        <p>Versão miniatura dos nossos famosos cinnamon rolls. Perfeito para compartilhar ou presentear!</p>
+                        <div class="product-footer">
+                            <div class="product-price">R$ 45,00</div>
+                            <button class="add-to-cart" onclick="addToCart('Mini Cinnamon Rolls (12 un.)', 45.00, this)">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMOÇÕES SECTION -->
+    <section class="section" id="promocoesSection" style="display:none;">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">🎉 Ofertas Especiais</div>
+                <h2 class="section-title">Promoções</h2>
+                <p class="section-subtitle">Aproveite nossas ofertas exclusivas e combos especiais!</p>
+            </div>
+
+            <div class="promos-grid">
+                <!-- PROMO 1 -->
+                <div class="promo-card promo-featured">
+                    <div class="promo-badge-label">⚡ OFERTA DO DIA</div>
+                    <div class="promo-image">
+                        <img src="https://sspark.genspark.ai/cfimages?u1=ZwNTI8dJa8u9yf8z%2Bu3JE5CVc1nTR2pyLhck31CDjfA9wLd8hm1%2BQ3pfSrD3sDPJPHI%2FJ44gj47qGvf2K2dbT3mEQ%2B%2Fgh2u3NQv7aCUefI57AhKCjLpJEeH3XUENZlLoDxa9&u2=Og%2B4INoXP3S1JVE1&width=2560" alt="Kit Café da Manhã">
+                    </div>
+                    <div class="promo-info">
+                        <h3>🌅 Kit Café da Manhã Especial</h3>
+                        <p>1 Pão Caseiro + 10 Pães de Queijo + 1 Bolo de Cenoura. O café da manhã dos sonhos!</p>
+                        <div class="promo-pricing">
+                            <span class="original-price">R$ 85,50</span>
+                            <span class="promo-price">R$ 69,90</span>
+                        </div>
+                        <div class="savings-badge">Economize R$ 15,60!</div>
+                        <div class="promo-countdown">
+                            <i class="fas fa-clock"></i>
+                            <span>Válido até <strong>amanhã às 18h!</strong></span>
+                        </div>
+                        <button class="btn-promo" onclick="addToCart('Kit Café da Manhã Especial', 69.90, this)">
+                            <i class="fas fa-shopping-basket"></i> Quero esse combo!
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PROMO 2 -->
+                <div class="promo-card">
+                    <div class="promo-badge-label">🎂 ANIVERSÁRIO</div>
+                    <div class="promo-image">
+                        <img src="https://sspark.genspark.ai/cfimages?u1=BqF29Hi9v9dBK8vKMifKIjAYn7FCrNwnKfx3ZESfPDDAAZSreQd60ed07uZRPXodvN03zY4YXf3RCTfwhc6VLwj5792MGeK%2BK1K9jzQLsFfIoly4uOvkDI5yCbLWdYdzX80cbdpHhQA%3D&u2=0DFoNPEJGoRC9wgH&width=2560" alt="Kit Festa">
+                    </div>
+                    <div class="promo-info">
+                        <h3>🥳 Kit Festa Completo</h3>
+                        <p>1 Bolo de Aniversário + 50 Pães de Queijo + 12 Mini Cinnamon Rolls. Festa perfeita!</p>
+                        <div class="promo-pricing">
+                            <span class="original-price">R$ 290,00</span>
+                            <span class="promo-price">R$ 229,90</span>
+                        </div>
+                        <div class="savings-badge">Economize R$ 60,10!</div>
+                        <button class="btn-promo" onclick="addToCart('Kit Festa Completo', 229.90, this)">
+                            <i class="fas fa-shopping-basket"></i> Quero esse combo!
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PROMO 3 -->
+                <div class="promo-card">
+                    <div class="promo-badge-label">🍫 SEMANA</div>
+                    <div class="promo-image">
+                        <img src="https://sspark.genspark.ai/cfimages?u1=9JRo42Lcv65ETepUxlf8Xhq%2Fgd44D%2BEsJUuoD7qqcoqrRKVTK7iVSszXiVlNL1XPUkYIvo%2Fj9VHFxzjzKpu2Ce7at81h1m9SswlGdVwsT1Huc7xI8hOt7PBvl6%2BxEPcaQSxX0Weh%2B2iJFQ%3D%3D&u2=4wA2Blmu4nBafL09&width=2560" alt="Combo Chocolate">
+                    </div>
+                    <div class="promo-info">
+                        <h3>🍫 Combo do Chocolate</h3>
+                        <p>1 Bolo de Chocolate Triplo + 6 Cinnamon Rolls. Para os apaixonados por chocolate!</p>
+                        <div class="promo-pricing">
+                            <span class="original-price">R$ 175,00</span>
+                            <span class="promo-price">R$ 139,90</span>
+                        </div>
+                        <div class="savings-badge">Economize R$ 35,10!</div>
+                        <button class="btn-promo" onclick="addToCart('Combo do Chocolate', 139.90, this)">
+                            <i class="fas fa-shopping-basket"></i> Quero esse combo!
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PROMO FIDELIDADE -->
+                <div class="promo-fidelidade">
+                    <div class="fidelidade-content">
+                        <div class="fidelidade-icon">⭐</div>
+                        <div class="fidelidade-text">
+                            <h3>Programa Fidelidade Lu</h3>
+                            <p>A cada 10 compras, ganhe um produto grátis da nossa escolha! Cadastre-se via WhatsApp.</p>
+                        </div>
+                        <a href="https://wa.me/5511999998888?text=Quero+me+cadastrar+no+Programa+Fidelidade!" class="btn-fidelidade" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Cadastrar Agora
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEEDBACKS SECTION -->
+    <section class="section" id="feedbacksSection" style="display:none;">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">💬 Clientes Felizes</div>
+                <h2 class="section-title">O que dizem nossos clientes</h2>
+                <p class="section-subtitle">Mais de 500 clientes satisfeitos com nossas delícias!</p>
+            </div>
+
+            <!-- RATING SUMMARY -->
+            <div class="rating-summary">
+                <div class="rating-big">
+                    <span class="rating-number">4.9</span>
+                    <div class="rating-stars-big">⭐⭐⭐⭐⭐</div>
+                    <span class="rating-total">+500 avaliações</span>
+                </div>
+                <div class="rating-bars">
+                    <div class="rating-bar-item">
+                        <span>5 ⭐</span>
+                        <div class="bar"><div class="bar-fill" style="width: 90%"></div></div>
+                        <span>90%</span>
+                    </div>
+                    <div class="rating-bar-item">
+                        <span>4 ⭐</span>
+                        <div class="bar"><div class="bar-fill" style="width: 7%"></div></div>
+                        <span>7%</span>
+                    </div>
+                    <div class="rating-bar-item">
+                        <span>3 ⭐</span>
+                        <div class="bar"><div class="bar-fill" style="width: 2%"></div></div>
+                        <span>2%</span>
+                    </div>
+                    <div class="rating-bar-item">
+                        <span>2 ⭐</span>
+                        <div class="bar"><div class="bar-fill" style="width: 1%"></div></div>
+                        <span>1%</span>
+                    </div>
+                    <div class="rating-bar-item">
+                        <span>1 ⭐</span>
+                        <div class="bar"><div class="bar-fill" style="width: 0%"></div></div>
+                        <span>0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feedbacks-grid">
+                <div class="feedback-card">
+                    <div class="feedback-header">
+                        <div class="feedback-avatar">👩</div>
+                        <div class="feedback-author">
+                            <strong>Maria Clara S.</strong>
+                            <span>São Paulo - SP</span>
+                        </div>
+                        <div class="feedback-stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <p class="feedback-text">"O pão caseiro da Lu é o melhor que já provei! Fresquinho, macio e com aquele gostinho de amor. Toda semana faço meu pedido!"</p>
+                    <span class="feedback-product">🍞 Pão Caseiro Artesanal</span>
+                    <span class="feedback-date">há 2 dias</span>
+                </div>
+
+                <div class="feedback-card">
+                    <div class="feedback-header">
+                        <div class="feedback-avatar">👨</div>
+                        <div class="feedback-author">
+                            <strong>João Paulo M.</strong>
+                            <span>Santo André - SP</span>
+                        </div>
+                        <div class="feedback-stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <p class="feedback-text">"Pedi o Kit Festa para o aniversário da minha filha e foi um sucesso absoluto! O bolo estava lindo e delicioso. Todos pediram o contato da Lu!"</p>
+                    <span class="feedback-product">🎂 Kit Festa Completo</span>
+                    <span class="feedback-date">há 1 semana</span>
+                </div>
+
+                <div class="feedback-card featured-feedback">
+                    <div class="feedback-header">
+                        <div class="feedback-avatar">👩</div>
+                        <div class="feedback-author">
+                            <strong>Ana Beatriz F.</strong>
+                            <span>ABC - SP</span>
+                        </div>
+                        <div class="feedback-stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <p class="feedback-text">"Encontrei a Sabores da Lu no Instagram e me apaixonei! O bolo de cenoura com chocolate é PERFEITO. Exatamente igual ao da minha avó. Entrega pontual e embalagem linda!"</p>
+                    <span class="feedback-product">🍰 Bolo de Cenoura com Chocolate</span>
+                    <span class="feedback-date">há 3 dias</span>
+                </div>
+
+                <div class="feedback-card">
+                    <div class="feedback-header">
+                        <div class="feedback-avatar">👨</div>
+                        <div class="feedback-author">
+                            <strong>Carlos Eduardo R.</strong>
+                            <span>Guarulhos - SP</span>
+                        </div>
+                        <div class="feedback-stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <p class="feedback-text">"Os pães de queijo são incríveis! Pedi 50 unidades para um evento corporativo e todos adoraram. Já virei cliente fixo!"</p>
+                    <span class="feedback-product">🧀 Pão de Queijo Mineiro</span>
+                    <span class="feedback-date">há 5 dias</span>
+                </div>
+
+                <div class="feedback-card">
+                    <div class="feedback-header">
+                        <div class="feedback-avatar">👩</div>
+                        <div class="feedback-author">
+                            <strong>Patrícia Lima</strong>
+                            <span>Osasco - SP</span>
+                        </div>
+                        <div class="feedback-stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <p class="feedback-text">"O Cinnamon Roll é divino! Nunca tinha provado um tão bom aqui no Brasil. Massa fofinha, canela na medida certa e cobertura incrível. Já faço encomenda toda sexta!"</p>
+                    <span class="feedback-product">🌀 Cinnamon Roll</span>
+                    <span class="feedback-date">há 1 semana</span>
+                </div>
+
+                <div class="feedback-card">
+                    <div class="feedback-header">
+                        <div class="feedback-avatar">👩</div>
+                        <div class="feedback-author">
+                            <strong>Fernanda Costa</strong>
+                            <span>Campinas - SP</span>
+                        </div>
+                        <div class="feedback-stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <p class="feedback-text">"Melhor padaria caseira que conheço! Preço justo, qualidade impecável e a Lu é super atenciosa nos pedidos. Minha família é fã!"</p>
+                    <span class="feedback-product">🍞 Pão Francês Artesanal</span>
+                    <span class="feedback-date">há 2 semanas</span>
+                </div>
+            </div>
+
+            <!-- LEAVE FEEDBACK -->
+            <div class="leave-feedback">
+                <h3>🌟 Deixe seu Feedback!</h3>
+                <p>Sua opinião é muito importante para nós. Entre em contato pelo WhatsApp!</p>
+                <a href="https://wa.me/5511999998888?text=Olá!+Quero+deixar+meu+feedback+sobre+os+produtos+Sabores+da+Lu!" 
+                   class="btn-feedback" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Enviar Avaliação
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO SECTION -->
+    <section class="section" id="contatoSection" style="display:none;">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">📞 Fale Conosco</div>
+                <h2 class="section-title">Contato</h2>
+                <p class="section-subtitle">Estamos aqui para atender você com muito carinho!</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- INFO CARDS -->
+                <div class="contact-info-area">
+                    <div class="contact-card">
+                        <div class="contact-icon whatsapp-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>WhatsApp</h4>
+                            <p>(11) 99999-8888</p>
+                            <a href="https://wa.me/5511999998888?text=Olá!+Quero+fazer+uma+encomenda!" target="_blank" class="contact-action-btn whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i> Chamar no WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon insta-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Instagram</h4>
+                            <p>@saboresdalu</p>
+                            <a href="#" class="contact-action-btn insta-btn">
+                                <i class="fab fa-instagram"></i> Seguir no Instagram
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon clock-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Horário de Atendimento</h4>
+                            <p>Segunda a Sábado: 7h às 20h</p>
+                            <p>Domingo: 7h às 14h</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon location-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Localização</h4>
+                            <p>São Paulo - SP</p>
+                            <p><small>Entregamos em toda a região!</small></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ORDER FORM -->
+                <div class="order-form-area">
+                    <div class="order-form-card">
+                        <h3>📝 Faça sua Encomenda</h3>
+                        <p>Preencha os dados abaixo e entraremos em contato pelo WhatsApp!</p>
+                        <form class="order-form" onsubmit="sendOrder(event)">
+                            <div class="form-group">
+                                <label><i class="fas fa-user"></i> Seu Nome</label>
+                                <input type="text" id="clientName" placeholder="Como posso te chamar?" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-phone"></i> WhatsApp</label>
+                                <input type="tel" id="clientPhone" placeholder="(11) 99999-9999" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-cake-candles"></i> Tipo de Produto</label>
+                                <select id="productType" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="Pão Caseiro">🍞 Pão Caseiro</option>
+                                    <option value="Pão de Queijo">🧀 Pão de Queijo</option>
+                                    <option value="Bolo de Chocolate">🍫 Bolo de Chocolate</option>
+                                    <option value="Bolo de Cenoura">🥕 Bolo de Cenoura</option>
+                                    <option value="Cinnamon Roll">🌀 Cinnamon Roll</option>
+                                    <option value="Kit/Combo">🎁 Kit/Combo Especial</option>
+                                    <option value="Outro">✨ Outro</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-calendar"></i> Data para Entrega</label>
+                                <input type="date" id="deliveryDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-comment"></i> Observações</label>
+                                <textarea id="observations" placeholder="Detalhes do pedido, alergias, personalizações..." rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn-send-order">
+                                <i class="fab fa-whatsapp"></i> Enviar Pedido via WhatsApp
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:60px;height:60px;">
+                                <circle cx="40" cy="40" r="38" fill="#8B0000" stroke="#FFD700" stroke-width="2"/>
+                                <path d="M15 52 Q22 32 33 35 Q37 23 44 27 Q47 17 54 23 Q60 20 63 34 Q66 38 65 47 Q63 54 57 55 Q50 57 40 56 Q30 55 23 54 Q14 53 15 52Z" fill="#DEB887"/>
+                                <text x="40" y="68" font-family="serif" font-size="7" fill="#FFD700" text-anchor="middle" font-weight="bold">SABORES DA LU</text>
+                            </svg>
+                            <div>
+                                <span class="footer-brand-name">Sabores da Lu</span>
+                                <span class="footer-tagline">Feito com amor ❤️</span>
+                            </div>
+                        </div>
+                        <p>Delícias caseiras preparadas com ingredientes selecionados e muito carinho para tornar seus momentos mais especiais.</p>
+                        <div class="footer-social">
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="https://wa.me/5511999998888" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="footer-links">
+                        <h4>Navegação</h4>
+                        <ul>
+                            <li><a href="#" onclick="navigateTo('home')"><i class="fas fa-chevron-right"></i> Início</a></li>
+                            <li><a href="#" onclick="navigateTo('cardapio')"><i class="fas fa-chevron-right"></i> Cardápio</a></li>
+                            <li><a href="#" onclick="navigateTo('promocoes')"><i class="fas fa-chevron-right"></i> Promoções</a></li>
+                            <li><a href="#" onclick="navigateTo('feedbacks')"><i class="fas fa-chevron-right"></i> Feedbacks</a></li>
+                            <li><a href="#" onclick="navigateTo('contato')"><i class="fas fa-chevron-right"></i> Contato</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-products">
+                        <h4>Nossos Produtos</h4>
+                        <ul>
+                            <li><i class="fas fa-bread-slice"></i> Pão Caseiro Artesanal</li>
+                            <li><i class="fas fa-circle"></i> Pão de Queijo Mineiro</li>
+                            <li><i class="fas fa-birthday-cake"></i> Bolos Personalizados</li>
+                            <li><i class="fas fa-star"></i> Cinnamon Rolls</li>
+                            <li><i class="fas fa-gift"></i> Kits e Combos</li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-contact">
+                        <h4>Contato</h4>
+                        <div class="footer-contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>(11) 99999-8888</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fab fa-instagram"></i>
+                            <span>@saboresdalu</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Seg-Sáb: 7h às 20h</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>São Paulo - SP</span>
+                        </div>
+                        <a href="https://wa.me/5511999998888" class="footer-whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Fazer Pedido
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 Sabores da Lu. Todos os direitos reservados. Feito com <span class="heart">❤️</span> e muito carinho.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/5511999998888?text=Olá+Sabores+da+Lu!+Quero+fazer+um+pedido!" 
+       class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Faça seu pedido!</span>
+    </a>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Item adicionado!</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
