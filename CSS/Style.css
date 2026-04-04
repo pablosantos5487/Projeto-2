@@ -10,9 +10,9 @@
 }
 
 :root {
-    --primary: #C0392B;
-    --primary-dark: #8B0000;
-    --primary-light: #E74C3C;
+    --primary: #F8BBD0; /* rosa claro */
+    --primary-dark: #E48BA3;
+    --primary-light: #FFCAD4;
     --accent: #FFD700;
     --accent-light: #FFF3CD;
     --cream: #FFF8F0;
@@ -21,12 +21,12 @@
     --text-medium: #5D3A2A;
     --text-light: #8B5A4A;
     --border: #F0D9C8;
-    --shadow: rgba(139, 0, 0, 0.15);
-    --shadow-strong: rgba(139, 0, 0, 0.3);
+    --shadow: rgba(228, 139, 163, 0.12);
+    --shadow-strong: rgba(228, 139, 163, 0.24);
     --green: #27AE60;
     --whatsapp: #25D366;
-    --gradient: linear-gradient(135deg, #8B0000 0%, #C0392B 50%, #E74C3C 100%);
-    --gradient-warm: linear-gradient(135deg, #FF6B6B 0%, #C0392B 100%);
+    --gradient: linear-gradient(135deg, #E48BA3 0%, #F8BBD0 50%, #FFCAD4 100%);
+    --gradient-warm: linear-gradient(135deg, #FFD1DA 0%, #F8BBD0 100%);
     --font-title: 'Playfair Display', serif;
     --font-script: 'Dancing Script', cursive;
     --font-body: 'Lato', sans-serif;
