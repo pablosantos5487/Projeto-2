@@ -356,13 +356,13 @@ ul { list-style: none; }
 .remove-item {
     background: none;
     border: none;
-    color: #e74c3c;
+    color: var(--primary-light);
     cursor: pointer;
     font-size: 16px;
     transition: var(--transition);
     padding: 4px;
 }
-.remove-item:hover { color: #c0392b; transform: scale(1.2); }
+.remove-item:hover { color: var(--primary-dark); transform: scale(1.2); }
 
 .cart-footer {
     padding: 16px 20px;
@@ -411,7 +411,7 @@ ul { list-style: none; }
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(139,0,0,0.82) 0%, rgba(192,57,43,0.75) 50%, rgba(44,24,16,0.70) 100%);
+        background: linear-gradient(135deg, rgba(228,139,163,0.82) 0%, rgba(248,187,208,0.75) 50%, rgba(44,24,16,0.70) 100%);
 }
 .hero-content {
     position: relative;
@@ -1130,7 +1130,7 @@ ul { list-style: none; }
 .form-group textarea:focus {
     border-color: var(--primary);
     background: white;
-    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+    box-shadow: 0 0 0 3px rgba(248, 187, 208, 0.1);
 }
 .form-group textarea { resize: vertical; min-height: 80px; }
 
