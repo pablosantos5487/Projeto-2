@@ -1172,6 +1172,15 @@ ul { list-style: none; }
     gap: 12px;
     margin-bottom: 16px;
 }
+.footer-logo-img {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #FFD700;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    flex-shrink: 0;
+}
 .footer-brand-name {
     font-family: var(--font-script);
     font-size: 24px;
