@@ -104,9 +104,14 @@
                 <span>Total:</span>
                 <strong id="cartTotal">R$ 0,00</strong>
             </div>
-            <button class="btn-checkout" onclick="checkout()">
-                <i class="fab fa-whatsapp"></i> Finalizar via WhatsApp
-            </button>
+            <div class="cart-footer-actions">
+                <button class="btn-send-selected" onclick="sendSelectedToWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> Enviar selecionados
+                </button>
+                <button class="btn-checkout" onclick="checkout()">
+                    <i class="fab fa-whatsapp"></i> Finalizar via WhatsApp
+                </button>
+            </div>
         </div>
     </div>
 

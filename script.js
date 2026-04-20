@@ -162,6 +162,9 @@ function updateCartDisplay() {
             el.className = 'cart-item';
             el.setAttribute('data-id', item.id);
             el.innerHTML = `
+                <div class="cart-item-select">
+                    <input type="checkbox" class="cart-select" data-id="${item.id}" aria-label="Selecionar item">
+                </div>
                 <div class="cart-item-emoji">${item.emoji}</div>
                 <div class="cart-item-info">
                     <div class="cart-item-name">${item.name}</div>
@@ -183,6 +186,36 @@ function updateCartDisplay() {
         const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
         cartTotal.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
     }
+}
+
+// Envia apenas os itens selecionados no carrinho para o WhatsApp
+function sendSelectedToWhatsApp() {
+    const checked = Array.from(document.querySelectorAll('.cart-select:checked'));
+    if (checked.length === 0) {
+        showToast('⚠️ Selecione pelo menos um item para enviar.');
+        return;
+    }
+
+    const selectedIds = checked.map(c => Number(c.getAttribute('data-id')));
+    const selectedItems = cart.filter(i => selectedIds.includes(i.id));
+
+    if (selectedItems.length === 0) {
+        showToast('⚠️ Nenhum item válido selecionado.');
+        return;
+    }
+
+    let message = '🛒 *Olá, Sabores da Lu! Quero pedir os itens selecionados: *\n\n';
+    selectedItems.forEach(item => {
+        message += `• ${item.emoji} *${item.name}* — ${item.qty}x — R$ ${(item.price * item.qty).toFixed(2).replace('.', ',')}\n`;
+    });
+
+    const total = selectedItems.reduce((sum, it) => sum + (it.price * it.qty), 0);
+    message += `\n💰 *Total (itens selecionados): R$ ${total.toFixed(2).replace('.', ',')}*`;
+    message += '\n\nPor favor, confirme o pedido! 😊';
+
+    const encoded = encodeURIComponent(message);
+    window.open(`https://wa.me/5551999600602?text=${encoded}`, '_blank');
+    showToast('✅ Comanda dos itens selecionados aberta no WhatsApp!');
 }
 
 function checkout() {
