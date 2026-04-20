@@ -198,7 +198,7 @@ function checkout() {
     message += '\n\nPor favor, me ajude a confirmar o pedido! 😊';
 
     const encoded = encodeURIComponent(message);
-    window.open(`https://wa.me/5511999998888?text=${encoded}`, '_blank');
+    window.open(`https://wa.me/5551999600602?text=${encoded}`, '_blank');
 
     // Clear cart after checkout
     setTimeout(() => {
@@ -263,7 +263,7 @@ function sendOrder(event) {
     message += `\nAguardo o retorno! 😊`;
 
     const encoded = encodeURIComponent(message);
-    window.open(`https://wa.me/5511999998888?text=${encoded}`, '_blank');
+    window.open(`https://wa.me/5551999600602?text=${encoded}`, '_blank');
 
     showToast('✅ Pedido enviado via WhatsApp!');
     event.target.reset();
