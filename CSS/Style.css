@@ -694,7 +694,9 @@ ul { list-style: none; }
 
 .product-image-wrapper {
     position: relative;
-    height: 220px;
+    aspect-ratio: 4 / 3;
+    height: auto;
+    max-height: 320px;
     overflow: hidden;
 }
 .product-image-wrapper img {
@@ -702,6 +704,13 @@ ul { list-style: none; }
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
+}
+
+@media (max-width: 600px) {
+    .product-image-wrapper {
+        aspect-ratio: 16 / 9;
+        max-height: 220px;
+    }
 }
 .product-card:hover .product-image-wrapper img { transform: scale(1.08); }
 
