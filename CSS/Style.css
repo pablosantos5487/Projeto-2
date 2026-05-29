@@ -792,6 +792,34 @@ ul { list-style: none; }
     background: linear-gradient(135deg, #27AE60, #2ECC71);
 }
 
+/* ===================== SIZE OPTION BUTTONS (TORTA) ===================== */
+.size-options {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.size-btn {
+    padding: 10px 14px;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.size-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px var(--shadow-strong); }
+
+@media (max-width: 480px) {
+    .size-options { flex-direction: column; gap: 10px; }
+    .size-btn { width: 100%; justify-content: center; }
+}
+
 /* ===================== PROMOS ===================== */
 .promos-grid {
     display: grid;
