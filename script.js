@@ -68,7 +68,10 @@ function toggleCart() {
     document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : '';
 }
 
-function addToCart(name, price, btn) {
+function addToCart(name, price, btn, flavor) {
+    if (flavor) {
+        name = `${name} — ${flavor}`;
+    }
     const existingItem = cart.find(item => item.name === name);
 
     if (existingItem) {
@@ -386,6 +389,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     observeElements();
 
+    // Initialize torta image gallery (if present)
+    if (typeof initTortaGallery === 'function') initTortaGallery();
+
     // Close menu on outside click
     document.addEventListener('click', (e) => {
         const navbar = document.querySelector('.navbar');
@@ -397,6 +403,110 @@ document.addEventListener('DOMContentLoaded', () => {
             hamburger.classList.remove('active');
         }
     });
+});
+
+// ===================== TORTA GALLERY (IMAGENS VARIÁVEIS) =====================
+function initTortaGallery() {
+    const cards = Array.from(document.querySelectorAll('.product-card'));
+    const tortaCard = cards.find(c => {
+        const h = c.querySelector('h3');
+        return h && h.textContent.trim().toLowerCase() === 'torta';
+    });
+    if (!tortaCard) return;
+
+    const main = tortaCard.querySelector('.torta-main');
+    const thumbs = tortaCard.querySelectorAll('.torta-thumb');
+    if (!main || thumbs.length === 0) return;
+
+    // build source list and current index
+    const sources = Array.from(thumbs).map(t => t.dataset.src || t.getAttribute('src'));
+    let currentIndex = 0;
+
+    function showIndex(i) {
+        if (i < 0) i = sources.length - 1;
+        if (i >= sources.length) i = 0;
+        currentIndex = i;
+        main.src = sources[i];
+        thumbs.forEach((t, idx) => t.classList.toggle('active', idx === i));
+    }
+
+    thumbs.forEach((thumb, idx) => {
+        thumb.addEventListener('click', () => showIndex(idx));
+        thumb.setAttribute('role', 'button');
+        thumb.setAttribute('tabindex', '0');
+        thumb.addEventListener('keypress', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showIndex(idx); } });
+    });
+
+    // Prev / Next buttons
+    const prevBtn = tortaCard.querySelector('.torta-prev');
+    const nextBtn = tortaCard.querySelector('.torta-next');
+    if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => showIndex(currentIndex - 1));
+        nextBtn.addEventListener('click', () => showIndex(currentIndex + 1));
+    }
+
+    // Keyboard navigation when gallery focused
+    main.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') showIndex(currentIndex - 1);
+        if (e.key === 'ArrowRight') showIndex(currentIndex + 1);
+        if (e.key === 'Enter' || e.key === ' ') openModal();
+    });
+
+    // touch swipe support on main image
+    let pointerStartX = null;
+    main.addEventListener('pointerdown', (e) => { pointerStartX = e.clientX; main.setPointerCapture(e.pointerId); });
+    main.addEventListener('pointerup', (e) => {
+        if (pointerStartX === null) return;
+        const diff = e.clientX - pointerStartX;
+        if (Math.abs(diff) > 30) {
+            if (diff < 0) showIndex(currentIndex + 1); else showIndex(currentIndex - 1);
+        }
+        pointerStartX = null;
+    });
+
+    // Lightbox modal
+    const modal = document.createElement('div');
+    modal.className = 'torta-modal';
+    modal.innerHTML = `
+        <button class="torta-modal-nav t-prev" aria-label="Anterior">‹</button>
+        <div class="torta-modal-content"><img src="${sources[0]}" alt="Torta grande"></div>
+        <button class="torta-modal-nav t-next" aria-label="Próxima">›</button>
+        <button class="torta-modal-close" aria-label="Fechar">✕</button>
+    `;
+    document.body.appendChild(modal);
+
+    const modalImg = modal.querySelector('.torta-modal-content img');
+    const modalPrev = modal.querySelector('.torta-modal-nav.t-prev');
+    const modalNext = modal.querySelector('.torta-modal-nav.t-next');
+    const modalClose = modal.querySelector('.torta-modal-close');
+
+    function openModal() {
+        modal.classList.add('open');
+        modalImg.src = sources[currentIndex];
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    main.addEventListener('click', openModal);
+    modalPrev.addEventListener('click', () => { showIndex(currentIndex - 1); modalImg.src = sources[currentIndex]; });
+    modalNext.addEventListener('click', () => { showIndex(currentIndex + 1); modalImg.src = sources[currentIndex]; });
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+    // keyboard nav for modal
+    document.addEventListener('keydown', (e) => {
+        if (!modal.classList.contains('open')) return;
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowLeft') { showIndex(currentIndex - 1); modalImg.src = sources[currentIndex]; }
+        if (e.key === 'ArrowRight') { showIndex(currentIndex + 1); modalImg.src = sources[currentIndex]; }
+    });
+
+    // initialize
+    showIndex(0);
+}
 
     // Keyboard navigation for cart
     document.addEventListener('keydown', (e) => {
@@ -431,7 +541,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log('🍞 Sabores da Lu - Site carregado com sucesso!');
     console.log('❤️ Feito com muito amor!');
-});
+
 
 // ===================== HERO SECTION SETUP =====================
 // Make sure hero section is properly shown on page load

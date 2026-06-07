@@ -68,7 +68,10 @@ function toggleCart() {
     document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : '';
 }
 
-function addToCart(name, price, btn) {
+function addToCart(name, price, btn, flavor) {
+    if (flavor) {
+        name = `${name} — ${flavor}`;
+    }
     const existingItem = cart.find(item => item.name === name);
 
     if (existingItem) {

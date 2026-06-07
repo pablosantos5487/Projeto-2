@@ -248,8 +248,8 @@ Perfeita para compartilhar com a família, amigos ou transformar qualquer moment
 
 Perfeitas para festas, lanches, confraternizações ou para matar aquela vontade de comer algo saboroso e feito com carinho. Experimente e se apaixone por cada pedacinho! 😍🍕</p>
                         <div class="product-footer">
-                            <div class="product-price">R$ 50,00 <span class="unit">/ cento do pastel</span></div>
-                            <button class="add-to-cart" onclick="addToCart('Mini Pizza de Milho e Queijo (cento)', 50.00, this)">
+                            <div class="product-price">R$ 110,00 <span class="unit">/ cento do pastel</span></div>
+                            <button class="add-to-cart" onclick="addToCart('Mini Pizza de Milho e Queijo (cento)', 110.00, this)">
                                 <i class="fas fa-plus"></i> Adicionar
                             </button>
                         </div>
@@ -263,6 +263,15 @@ Perfeitas para festas, lanches, confraternizações ou para matar aquela vontade
                     <div class="product-info">
                         <div class="product-category-tag">Salgados</div>
                         <h3>Pasteis</h3>
+                        <p class="product-flavors"><strong>Sabores:</strong> Carne, Frango, Calabresa c/ queijo, Milho c/ queijo, Brócolis c/ queijo e Palmito c/ queijo</p>
+                        <div class="flavor-buttons" role="group" aria-label="Escolha o sabor do pastel">
+                            <button class="flavor-btn" onclick="addToCart('Pasteis (cento)', 90.00, this, 'Carne')">Carne</button>
+                            <button class="flavor-btn" onclick="addToCart('Pasteis (cento)', 90.00, this, 'Frango')">Frango</button>
+                            <button class="flavor-btn" onclick="addToCart('Pasteis (cento)', 90.00, this, 'Calabresa c/ queijo')">Calabresa c/ queijo</button>
+                            <button class="flavor-btn" onclick="addToCart('Pasteis (cento)', 90.00, this, 'Milho c/ queijo')">Milho c/ queijo</button>
+                            <button class="flavor-btn" onclick="addToCart('Pasteis (cento)', 90.00, this, 'Brócolis c/ queijo')">Brócolis c/ queijo</button>
+                            <button class="flavor-btn" onclick="addToCart('Pasteis (cento)', 90.00, this, 'Palmito c/ queijo')">Palmito c/ queijo</button>
+                        </div>
                         <p>Crocrantes por fora, macios por dentro e recheados com muito sabor! Nossos mini salgados sabor pizza são preparados com ingredientes selecionados e aquele toque especial que conquista em cada mordida.
 
 🥓 Calabresa: recheio saboroso e bem temperado, com o gostinho irresistível da pizza tradicional.
@@ -270,10 +279,8 @@ Perfeitas para festas, lanches, confraternizações ou para matar aquela vontade
 
 Ideais para festas, aniversários, confraternizações ou qualquer momento especial. Servidos fresquinhos e feitos com muito carinho para deixar sua mesa ainda mais saborosa! 😍</p>
                         <div class="product-footer">
-                            <div class="product-price">R$ 65,00 <span class="unit">/ cento</span></div>
-                            <button class="add-to-cart" onclick="addToCart('Pasteis (cento)', 65.00, this)">
-                                <i class="fas fa-plus"></i> Adicionar
-                            </button>
+                            <div class="product-price">R$ 90,00 <span class="unit">/ cento</span></div>
+                            <div class="choose-note">Escolha o sabor acima</div>
                         </div>
                     </div>
                 </div>
@@ -318,7 +325,16 @@ Além de deliciosos, são perfeitos para festas, cafés da tarde, eventos ou par
 
                 <div class="product-card" data-category="bolos">
                     <div class="product-image-wrapper">
-                        <img src="IMG/img_produto7.jpg" alt="Torta" loading="lazy" onerror="this.onerror=null;this.style.display='none'">
+                        <div class="torta-gallery">
+                            <button class="torta-nav torta-prev" aria-label="Imagem anterior">‹</button>
+                            <img id="torta-main" class="torta-main" src="IMG/img_produto7.jpg" alt="Torta" loading="lazy" onerror="this.onerror=null;this.style.display='none'" tabindex="0">
+                            <button class="torta-nav torta-next" aria-label="Próxima imagem">›</button>
+                            <div class="torta-thumbs" aria-label="Opções de imagens da torta">
+                                <img class="torta-thumb active" src="IMG/img_produto7.jpg" data-src="IMG/img_produto7.jpg" alt="Torta 1" loading="lazy" onerror="this.onerror=null;this.style.display='none'">
+                                <img class="torta-thumb" src="IMG/img_produto8.jpg" data-src="IMG/img_produto8.jpg" alt="Torta 2" loading="lazy" onerror="this.onerror=null;this.style.display='none'">
+                                <img class="torta-thumb" src="IMG/img_produto9.jpg" data-src="IMG/img_produto9.jpg" alt="Torta 3" loading="lazy" onerror="this.onerror=null;this.style.display='none'">
+                            </div>
+                        </div>
                     </div>
                     <div class="product-info">
                         <div class="product-category-tag">Bolos</div>
@@ -341,20 +357,25 @@ Ideal para aniversários, comemorações, festas ou qualquer momento que mereça
                 </div>
 
                 <!-- BOLOS -->
-                <div class="product-card" data-category="bolos">
+                <div class="product-card" data-category="salgados">
                     <div class="product-image-wrapper">
-                        <img src="https://sspark.genspark.ai/cfimages?u1=ejrUjQabP3qDGURIaM6ZsK6YheVfB6AqFS9lY43PT5dRZTdQ49ru1O6eSgFNcpv132vA10qSs55PwccaXQEtxRc10prIEk2Fad1gIMNaZUYmcCHYKytLp6cRnQY&u2=HUqt51MDtEtXu%2FxA&width=2560" alt="Bolo de Chocolate" loading="lazy">
-                        <div class="product-badge">🔥 Favorito</div>
+                        <img src="IMG/img_produto12.png" alt="Pastéis simples" loading="lazy" onerror="this.onerror=null;this.style.display='none'">
                     </div>
                     <div class="product-info">
-                        
-                        <h3>Bolo de Chocolate Triplo</h3>
-                        <p>Três camadas de bolo de chocolate com cobertura cremosa de ganache. Puro prazer em cada fatia!</p>
+                        <div class="product-category-tag">Salgados</div>
+                        <h3>Pastéis simples</h3>
+                        <p class="product-flavors"><strong>Sabores:</strong> Carne, Frango, Calabresa c/ queijo, Presunto e queijo, Brócolis c/ queijo</p>
+                        <div class="flavor-buttons" role="group" aria-label="Escolha o sabor do pastel">
+                            <button class="flavor-btn" onclick="addToCart('Pastéis simples (cento)', 90.00, this, 'Carne')">Carne</button>
+                            <button class="flavor-btn" onclick="addToCart('Pastéis simples (cento)', 90.00, this, 'Frango')">Frango</button>
+                            <button class="flavor-btn" onclick="addToCart('Pastéis simples (cento)', 90.00, this, 'Calabresa c/ queijo')">Calabresa c/ queijo</button>
+                            <button class="flavor-btn" onclick="addToCart('Pastéis simples (cento)', 90.00, this, 'Presunto e queijo')">Presunto e queijo</button>
+                            <button class="flavor-btn" onclick="addToCart('Pastéis simples (cento)', 90.00, this, 'Brócolis c/ queijo')">Brócolis c/ queijo</button>
+                        </div>
+                        <p>Deliciosos pastéis de massa simples, preparados com ingredientes selecionados e fritos na medida certa para garantir crocância e sabor em cada mordida. Feitos com carinho para deixar seus momentos ainda mais especiais. 🥟✨</p>
                         <div class="product-footer">
-                            <div class="product-price">R$ 85,00</div>
-                            <button class="add-to-cart" onclick="addToCart('Bolo de Chocolate Triplo', 85.00, this)">
-                                <i class="fas fa-plus"></i> Adicionar
-                            </button>
+                            <div class="product-price">R$ 90,00 <span class="unit">/ cento</span></div>
+                            <div class="choose-note">Escolha o sabor acima</div>
                         </div>
                     </div>
                 </div>
@@ -908,6 +929,6 @@ Ideal para aniversários, comemorações, festas ou qualquer momento que mereça
         <span id="toastMessage">Item adicionado!</span>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=4"></script>
 </body>
 </html>
