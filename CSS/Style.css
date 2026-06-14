@@ -743,6 +743,34 @@ ul { list-style: none; }
 .flavor-btn:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 6px 14px var(--shadow-strong); }
 .flavor-btn:active { transform: translateY(0); }
 
+/* Opções de recheio/condimento */
+.option-group { margin-bottom: 12px; }
+.option-title { font-weight: 700; margin-bottom: 8px; color: var(--text-medium); }
+.option-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* Estado selecionado */
+.flavor-btn.active {
+    background: var(--primary-dark);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 8px 22px var(--shadow-strong);
+    transform: translateY(-2px);
+}
+.flavor-btn:focus { outline: 3px solid rgba(228,139,163,0.18); }
+
+/* Botões de tamanho */
+.size-btn {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 700;
+}
+.size-btn:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 8px 18px var(--shadow-strong); }
+
+
 /* Nota para escolher sabor (quando substituímos o botão genérico) */
 .choose-note {
     font-size: 0.95rem;

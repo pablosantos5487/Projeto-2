@@ -116,6 +116,35 @@ function getProductEmoji(name) {
     return '🍰';
 }
 
+// ===================== OPTION SELECTORS (RECHEIOS / CONDIMENTOS) =====================
+function selectOption(btn, group, value) {
+    const card = btn.closest('.product-card');
+    if (!card) return;
+
+    // clear previous active in the same group
+    const buttons = card.querySelectorAll(`.option-buttons button[onclick*="${group}"]`);
+    buttons.forEach(b => b.classList.remove('active'));
+
+    // mark selected
+    btn.classList.add('active');
+
+    // store selection on the card
+    card.dataset[group] = value;
+
+    showToast(`✅ ${group.charAt(0).toUpperCase() + group.slice(1)} selecionado: ${value}`);
+}
+
+function addTortaToCart(name, price, btn) {
+    const card = btn.closest('.product-card');
+    if (!card) return addToCart(name, price, btn);
+
+    const recheio = card.dataset.recheio || 'Sem recheio selecionado';
+    const condimento = card.dataset.condimento || 'Sem condimento selecionado';
+
+    const flavor = `${recheio} / ${condimento}`;
+    addToCart(name, price, btn, flavor);
+}
+
 function removeFromCart(id) {
     cart = cart.filter(item => item.id !== id);
     updateCartDisplay();

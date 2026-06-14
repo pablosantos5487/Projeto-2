@@ -296,8 +296,8 @@ Ideais para festas, aniversários, confraternizações ou qualquer momento espec
 
 Perfeitos para festas, lanches ou qualquer momento especial, garantindo sabor irresistível e aquele gostinho caseiro que conquista todo mundo. Trabalhamos sempre com produtos de ótima qualidade para oferecer o melhor aos nossos clientes! ✨</p>
                         <div class="product-footer">
-                            <div class="product-price">R$ 3,00 <span class="unit">/ unid.</span></div>
-                            <button class="add-to-cart" onclick="addToCart('Mini Cachorro Quente Artesanal', 3.00, this)">
+                            <div class="product-price">R$ 130,00 <span class="unit">/ cento</span></div>
+                            <button class="add-to-cart" onclick="addToCart('Mini Cachorro Quente Artesanal (cento)', 130.00, this)">
                                 <i class="fas fa-plus"></i> Adicionar
                             </button>
                         </div>
@@ -315,8 +315,8 @@ Perfeitos para festas, lanches ou qualquer momento especial, garantindo sabor ir
 
 Além de deliciosos, são perfeitos para festas, cafés da tarde, eventos ou para matar a fome a qualquer hora do dia. Cada unidade é feita pensando em oferecer sabor, qualidade e satisfação em cada mordida! ✨</p>
                         <div class="product-footer">
-                            <div class="product-price">R$ 6,00 <span class="unit">/ bandeja</span></div>
-                            <button class="add-to-cart" onclick="addToCart('Mini Enroladinhos Assados (bandeja)', 6.00, this)">
+                            <div class="product-price">R$ 55,00 <span class="unit">/ cento</span></div>
+                            <button class="add-to-cart" onclick="addToCart('Mini Enroladinhos Assados (cento)', 55.00, this)">
                                 <i class="fas fa-plus"></i> Adicionar
                             </button>
                         </div>
@@ -339,18 +339,38 @@ Além de deliciosos, são perfeitos para festas, cafés da tarde, eventos ou par
                     <div class="product-info">
                         <div class="product-category-tag">Bolos</div>
                         <h3>Torta</h3>
-                        <p>Nossa torta é preparada com muito carinho, amor e ingredientes de excelente qualidade, garantindo sabor irresistível e uma apresentação encantadora! Com massa macia, recheios deliciosos e cobertura feita com todo cuidado, cada detalhe é pensado para surpreender você e seus convidados. 💙
+                        <p>Nossa torta é preparada com ingredientes selecionados e muito carinho, garantindo sabor e apresentação especiais. Personalize com o recheio e o condimento de sua preferência.</p>
 
-E o melhor: o sabor pode ser montado do jeitinho que o cliente desejar! 😍
-Escolha a combinação perfeita entre massas, recheios e coberturas para criar um bolo único, personalizado especialmente para sua ocasião.
+                        <div class="product-options">
+                            <div class="option-group">
+                                <div class="option-title">Recheios</div>
+                                <div class="option-buttons">
+                                    <button class="flavor-btn" onclick="selectOption(this,'recheio','Brigadeiro')">Brigadeiro</button>
+                                    <button class="flavor-btn" onclick="selectOption(this,'recheio','Leite Condensado')">Leite Condensado</button>
+                                    <button class="flavor-btn" onclick="selectOption(this,'recheio','Beijinho')">Beijinho</button>
+                                    <button class="flavor-btn" onclick="selectOption(this,'recheio','Ninho')">Ninho</button>
+                                    <button class="flavor-btn" onclick="selectOption(this,'recheio','Bombom')">Bombom</button>
+                                </div>
+                            </div>
 
-Ideal para aniversários, comemorações, festas ou qualquer momento que mereça um toque doce e inesquecível. Faça sua encomenda e deixe sua celebração ainda mais saborosa! ✨🍰</p>
+                            <div class="option-group">
+                                <div class="option-title">Condimentos</div>
+                                <div class="option-buttons">
+                                    <button class="flavor-btn" onclick="selectOption(this,'condimento','Morango')">Morango</button>
+                                    <button class="flavor-btn" onclick="selectOption(this,'condimento','Pêssego')">Pêssego</button>
+                                    <button class="flavor-btn" onclick="selectOption(this,'condimento','Abacaxi')">Abacaxi</button>
+                                    <button class="flavor-btn" onclick="selectOption(this,'condimento','Coco')">Coco</button>
+                                    <button class="flavor-btn" onclick="selectOption(this,'condimento','Amendoim')">Amendoim</button>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="product-footer">
                             <div class="product-price">Escolha o tamanho:</div>
                             <div class="size-options">
-                                <button class="size-btn" onclick="addToCart('Torta - 30 fatias', 70.00, this)">30 fatias — R$ 70,00</button>
-                                <button class="size-btn" onclick="addToCart('Torta - 35 fatias', 80.00, this)">35 fatias — R$ 80,00</button>
-                                <button class="size-btn" onclick="addToCart('Torta - 40 fatias', 90.00, this)">40 fatias — R$ 90,00</button>
+                                <button class="size-btn" onclick="addTortaToCart('Torta - 30 fatias', 70.00, this)">30 fatias — R$ 70,00</button>
+                                <button class="size-btn" onclick="addTortaToCart('Torta - 35 fatias', 80.00, this)">35 fatias — R$ 80,00</button>
+                                <button class="size-btn" onclick="addTortaToCart('Torta - 40 fatias', 90.00, this)">40 fatias — R$ 90,00</button>
                             </div>
                         </div>
                     </div>
@@ -380,18 +400,17 @@ Ideal para aniversários, comemorações, festas ou qualquer momento que mereça
                     </div>
                 </div>
 
-                <div class="product-card" data-category="bolos">
+                <div class="product-card" data-category="salgados">
                     <div class="product-image-wrapper">
-                        <img src="https://sspark.genspark.ai/cfimages?u1=H3%2FKn3v%2FswzckVqU7pQzSbvzvGd5uV25yndsGofAWiAYHVwULnytBB2e%2Bi%2FSmHAnM9PjuWRmajmmS9cWEbLTFXgbeuaiYYMMzu5PG3NHVv0ShDJCkKmHN%2Bk7%2FdcjePBHOHKYjusn%2FBbs&u2=2CS%2BTMtQXndyzxgP&width=2560" alt="Bolo de Cenoura" loading="lazy">
-                        <div class="product-badge">❤️ Especial</div>
+                        <img src="IMG/img_produto13.png" alt="Enroladinhos de salsicha (massa simples)" loading="lazy" onerror="this.onerror=null;this.style.display='none'">
                     </div>
                     <div class="product-info">
-                        
-                        <h3>Bolo de Cenoura com Chocolate</h3>
-                        <p>O clássico bolo de cenoura brasileiro com cobertura de chocolate quentinho. Receita da vovó!</p>
+                        <div class="product-category-tag">Salgados</div>
+                        <h3>Enroladinhos de salsicha (massa simples)</h3>
+                        <p>Deliciosos enroladinhos de salsicha feitos com massa leve, macia e dourada na medida certa. Preparados com ingredientes de qualidade e muito carinho para garantir sabor irresistível em cada mordida. Perfeito para festas, eventos e confraternizações. Vendido por cento.</p>
                         <div class="product-footer">
-                            <div class="product-price">R$ 65,00</div>
-                            <button class="add-to-cart" onclick="addToCart('Bolo de Cenoura com Chocolate', 65.00, this)">
+                            <div class="product-price">R$ 75,00 <span class="unit">/ cento</span></div>
+                            <button class="add-to-cart" onclick="addToCart('Enroladinhos de salsicha (cento)', 75.00, this)">
                                 <i class="fas fa-plus"></i> Adicionar
                             </button>
                         </div>
@@ -400,90 +419,22 @@ Ideal para aniversários, comemorações, festas ou qualquer momento que mereça
 
                 <div class="product-card" data-category="bolos">
                     <div class="product-image-wrapper">
-                        <img src="https://sspark.genspark.ai/cfimages?u1=2kUoQbMv472jkMgZpftr%2B91161AOSoCY%2FP5O0cuN8SJ7kkrP1VQCFJ0HNigxKNMcbFATRhidOcMd7N5ws8plLqg2TC2ZSY%2B7ppIpHIXyLptXXQsb&u2=ENtDwtaoer9pQt9F&width=2560" alt="Bolo de Mel" loading="lazy">
+                        <img src="IMG/img_produto14.png" alt="Enroladinhos com salsicha (à milanesa)" loading="lazy" onerror="this.onerror=null;this.style.display='none'">
                     </div>
                     <div class="product-info">
-                        
-                        <h3>Bolo de Mel Artesanal</h3>
-                        <p>Delicioso bolo com mel puro e especiarias. Textura densa e molhada, perfeito para qualquer ocasião.</p>
+                        <div class="product-category-tag">Salgados</div>
+                        <h3>Enroladinhos com salsicha (à milanesa)</h3>
+                        <p>Crocantes por fora e saborosos por dentro, nossos enroladinhos de salsicha à milanesa são empanados e fritos até atingir a textura perfeita. Produzidos com ingredientes selecionados e preparados com muito amor para deixar sua festa ainda mais especial. Vendido por cento.</p>
                         <div class="product-footer">
-                            <div class="product-price">R$ 55,00</div>
-                            <button class="add-to-cart" onclick="addToCart('Bolo de Mel Artesanal', 55.00, this)">
+                            <div class="product-price">R$ 85,00 <span class="unit">/ cento</span></div>
+                            <button class="add-to-cart" onclick="addToCart('Enroladinhos com salsicha (cento)', 85.00, this)">
                                 <i class="fas fa-plus"></i> Adicionar
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card" data-category="bolos">
-                    <div class="product-image-wrapper">
-                        <img src="https://sspark.genspark.ai/cfimages?u1=mHUIAwfn4Sa0yyfLyoKlDOedFNP0viYEm%2F%2Ftn%2F8MTYJ3mx%2F1uJjQSKju7E%2BgFBMmmGK%2Bp0lV1lWot7%2FuWYsjf9V1oWgX45mFLWtH%2B%2F%2FC8IFxHQxSOYk72lBYIT1A5S8Hlvt88LsBOVQVu23s&u2=JFq7N9Xf1uKufWHS&width=2560" alt="Bolo de Aniversário" loading="lazy">
-                    </div>
-                    <div class="product-info">
-                        
-                        <h3>Bolo de Aniversário Especial</h3>
-                        <p>Bolo personalizado para celebrar momentos únicos. Escolha o sabor, tamanho e decoração!</p>
-                        <div class="product-footer">
-                            <div class="product-price">R$ 120,00</div>
-                            <button class="add-to-cart" onclick="addToCart('Bolo de Aniversário Especial', 120.00, this)">
-                                <i class="fas fa-plus"></i> Adicionar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- DELÍCIAS -->
-                <div class="product-card" data-category="delicias">
-                    <div class="product-image-wrapper">
-                        <img src="https://sspark.genspark.ai/cfimages?u1=2RcKPfbh33dCvmSMmGUn1K5qidpQS1zlVJNb1UNYxZny%2FYXkKmlZIBikv8Q0jz0%2BXyeH86pOMOWCf7OcKqMn1%2Frowv0eo8zEPZO5Wi6TUV1MyXmKuTABMMFCcoVpamGakvsUnd91DrbS6Q%3D%3D&u2=6v8D8fRL97aaJT2I&width=2560" alt="Cinnamon Roll" loading="lazy">
-                        <div class="product-badge new-badge">✨ Novo</div>
-                    </div>
-                    <div class="product-info">
-                        
-                        <h3>Cinnamon Roll</h3>
-                        <p>Espiral de massa fofinha com canela e açúcar mascavo, cobertura de cream cheese. Quente e irresistível!</p>
-                        <div class="product-footer">
-                            <div class="product-price">R$ 15,00</div>
-                            <button class="add-to-cart" onclick="addToCart('Cinnamon Roll', 15.00, this)">
-                                <i class="fas fa-plus"></i> Adicionar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card" data-category="delicias">
-                    <div class="product-image-wrapper">
-                        <img src="https://sspark.genspark.ai/cfimages?u1=BqwXaxjhcwttdW5RpHK4gJkAQMBRUa%2B5gwOiF45VMqbrEL4dt6CIbwXSRZrw4uKzZQQeWuZs6NKBmRmd9%2BD2sgijZJQRgOIAVTvNnm8VeKjBqvfnNwb%2FPzNLv9ED0tpHR7pIRwJbxyx7DLX8HDuTMstaJZc%3D&u2=sItmKJuMtfDWHSX9&width=2560" alt="Pão de Queijo Gourmet" loading="lazy">
-                    </div>
-                    <div class="product-info">
-                        
-                        <h3>Pão de Queijo Gourmet</h3>
-                        <p>Versão premium do nosso pão de queijo, recheado com queijo gorgonzola e goiabada. Combinação perfeita!</p>
-                        <div class="product-footer">
-                            <div class="product-price">R$ 5,00 <span class="unit">/ unid.</span></div>
-                            <button class="add-to-cart" onclick="addToCart('Pão de Queijo Gourmet', 5.00, this)">
-                                <i class="fas fa-plus"></i> Adicionar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card" data-category="delicias">
-                    <div class="product-image-wrapper">
-                        <img src="https://sspark.genspark.ai/cfimages?u1=kI8UleHweZvSDPAWuwvXN%2BicMrrlMFZ2TyiVdFJN6jC6lt2cWhnD7gSZakhagFbgY5xQmxCTQJ4%2FM6JfshNU3DjUL8eYBg%2Ba6nS10u8THg3%2F8TZSeDHn4jr78MxpsdMSY2hieeisxTWtXVvWxUv61rlYYA%3D%3D&u2=PMvLwW9tehhJjiKI&width=2560" alt="Cinnamon Roll Mini" loading="lazy">
-                    </div>
-                    <div class="product-info">
-                        
-                        <h3>Mini Cinnamon Rolls (12 un.)</h3>
-                        <p>Versão miniatura dos nossos famosos cinnamon rolls. Perfeito para compartilhar ou presentear!</p>
-                        <div class="product-footer">
-                            <div class="product-price">R$ 45,00</div>
-                            <button class="add-to-cart" onclick="addToCart('Mini Cinnamon Rolls (12 un.)', 45.00, this)">
-                                <i class="fas fa-plus"></i> Adicionar
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <!-- Produtos removidos a partir do 11º conforme solicitado -->
             </div>
         </div>
     </section>
@@ -630,7 +581,7 @@ Ideal para aniversários, comemorações, festas ou qualquer momento que mereça
                         <div class="feedback-avatar">👩</div>
                         <div class="feedback-author">
                             <strong>Maria Clara S.</strong>
-                            <span>São Paulo - SP</span>
+                            <span>Parobé - RS</span>
                         </div>
                         <div class="feedback-stars">⭐⭐⭐⭐⭐</div>
                     </div>
@@ -777,7 +728,7 @@ Ideal para aniversários, comemorações, festas ou qualquer momento que mereça
                         </div>
                         <div class="contact-details">
                             <h4>Localização</h4>
-                            <p>São Paulo - SP</p>
+                            <p>Parobé - RS</p>
                             <p><small>Entregamos em toda a região!</small></p>
                         </div>
                     </div>
@@ -871,11 +822,11 @@ Ideal para aniversários, comemorações, festas ou qualquer momento que mereça
                     <div class="footer-products">
                         <h4>Nossos Produtos</h4>
                         <ul>
-                            <li><i class="fas fa-bread-slice"></i> Pão Caseiro Artesanal</li>
-                            <li><i class="fas fa-circle"></i> Pão de Queijo Mineiro</li>
-                            <li><i class="fas fa-birthday-cake"></i> Bolos Personalizados</li>
-                            <li><i class="fas fa-star"></i> Cinnamon Rolls</li>
-                            <li><i class="fas fa-gift"></i> Kits e Combos</li>
+                            <li><i class="fas fa-pizza-slice"></i> Pizza de calabresa com muito queijo</li>
+                            <li><i class="fas fa-star"></i> Mini Enroladinhos Assados</li>
+                            <li><i class="fas fa-birthday-cake"></i> Torta personalizada</li>
+                            <li><i class="fas fa-hotdog"></i> Mini Cachorro Quente Artesanal</li>
+                            <li><i class="fas fa-star"></i> Enroladinhos de salsicha (massa simples)</li>
                         </ul>
                     </div>
 
@@ -895,7 +846,7 @@ Ideal para aniversários, comemorações, festas ou qualquer momento que mereça
                         </div>
                         <div class="footer-contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>São Paulo - SP</span>
+                            <span>Parobé - RS</span>
                         </div>
                         <a href="https://wa.me/5551999600602" class="footer-whatsapp-btn" target="_blank">
                             <i class="fab fa-whatsapp"></i> Fazer Pedido
