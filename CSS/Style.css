@@ -815,6 +815,66 @@ ul { list-style: none; }
 .torta-thumb:hover { transform: scale(1.04); opacity: 1; }
 .torta-thumb.active { border-color: var(--primary); box-shadow: 0 6px 18px var(--shadow-strong); opacity: 1; }
 
+.bolinho-gallery {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    outline: none;
+}
+
+.bolinho-image-stack {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.bolinho-image-stack img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.bolinho-main {
+    opacity: 1;
+    z-index: 1;
+}
+
+.bolinho-back {
+    opacity: 0.35;
+    z-index: 0;
+    filter: blur(1px);
+    transform: scale(1.05);
+}
+
+.gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.38);
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 5;
+    transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.gallery-nav:hover { transform: translateY(-50%) scale(1.06); background: rgba(0,0,0,0.52); }
+.gallery-nav.prev { left: 12px; }
+.gallery-nav.next { right: 12px; }
+
 @media (max-width: 480px) {
     .torta-thumb { width: 56px; height: 42px; }
 }

@@ -418,8 +418,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     observeElements();
 
-    // Initialize torta image gallery (if present)
+    // Initialize product image galleries (if present)
     if (typeof initTortaGallery === 'function') initTortaGallery();
+    if (typeof initBolinhoGallery === 'function') initBolinhoGallery();
 
     // Close menu on outside click
     document.addEventListener('click', (e) => {
@@ -433,6 +434,55 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// ===================== BOLINHO GALLERY (DUAS IMAGENS COM SETA) =====================
+function initBolinhoGallery() {
+    const galleries = document.querySelectorAll('.bolinho-gallery');
+
+    galleries.forEach(gallery => {
+        const main = gallery.querySelector('.bolinho-main');
+        const back = gallery.querySelector('.bolinho-back');
+        const prevBtn = gallery.querySelector('.gallery-nav.prev');
+        const nextBtn = gallery.querySelector('.gallery-nav.next');
+
+        if (!main || !back) return;
+
+        const images = [
+            'IMG/img_produto30.jpg',
+            'IMG/img_produto32.jpg'
+        ];
+
+        let activeIndex = 0;
+
+        const setActiveImage = (index) => {
+            activeIndex = index;
+            const isPrimary = activeIndex === 0;
+
+            main.src = images[0];
+            back.src = images[1];
+
+            main.style.opacity = isPrimary ? '1' : '0';
+            back.style.opacity = isPrimary ? '0.35' : '1';
+            main.style.zIndex = isPrimary ? '2' : '0';
+            back.style.zIndex = isPrimary ? '1' : '2';
+            main.style.transform = isPrimary ? 'scale(1)' : 'scale(1.04)';
+            back.style.transform = isPrimary ? 'scale(1.05)' : 'scale(1)';
+        };
+
+        const showNext = () => setActiveImage(activeIndex === 0 ? 1 : 0);
+        const showPrev = () => setActiveImage(activeIndex === 0 ? 1 : 0);
+
+        prevBtn?.addEventListener('click', showPrev);
+        nextBtn?.addEventListener('click', showNext);
+
+        gallery.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') showPrev();
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') showNext();
+        });
+
+        setActiveImage(0);
+    });
+}
 
 // ===================== TORTA GALLERY (IMAGENS VARIÁVEIS) =====================
 function initTortaGallery() {
